@@ -10,20 +10,23 @@ using RazerPagesMovie.Models;
 
 namespace RazerPagesMovie.Pages.Movies;
 
-    public class IndexModel : PageModel
+public class IndexModel : PageModel
+{
+    private readonly RazerPagesMovie.Data.RazerPagesMovieContext _context;
+
+    public IndexModel(RazerPagesMovie.Data.RazerPagesMovieContext context)
     {
-        private readonly RazerPagesMovie.Data.RazerPagesMovieContext _context;
+        _context = context;
+    }
 
-        public IndexModel(RazerPagesMovie.Data.RazerPagesMovieContext context)
-        {
-            _context = context;
-        }
+    public IList<Movie> Movie { get;set; } = default!;
 
-        public IList<Movie> Movie { get;set; } = default!;
-
-        public async Task OnGetAsync()
+    public async Task OnGetAsync()
+    {
+        if (_context.Movie != null)
         {
             Movie = await _context.Movie.ToListAsync();
         }
     }
+}
 
