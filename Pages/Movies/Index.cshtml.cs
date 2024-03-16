@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using RazerPagesMovie.Data;
 using RazerPagesMovie.Models;
 
-namespace RazerPagesMovie.Pages.Movies
-{
+namespace RazerPagesMovie.Pages.Movies;
+
     public class IndexModel : PageModel
     {
         private readonly RazerPagesMovie.Data.RazerPagesMovieContext _context;
@@ -26,4 +26,4 @@ namespace RazerPagesMovie.Pages.Movies
             Movie = await _context.Movie.ToListAsync();
         }
     }
-}
+
